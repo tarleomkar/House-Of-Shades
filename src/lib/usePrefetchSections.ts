@@ -5,7 +5,6 @@ export function usePrefetchSections() {
   useEffect(() => {
     const prefetch = () => {
       void import('@/components/layout/BelowFold')
-      void import('@/components/layout/MobileNav')
     }
 
     if (typeof window.requestIdleCallback === 'function') {

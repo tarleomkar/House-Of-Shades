@@ -20,8 +20,7 @@ export default defineConfig({
           (dep) =>
             !dep.includes('vendor-lenis') &&
             !dep.includes('vendor-motion') &&
-            !dep.includes('BelowFold') &&
-            !dep.includes('MobileNav'),
+            !dep.includes('BelowFold'),
         ),
     },
     rollupOptions: {
