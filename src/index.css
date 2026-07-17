@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+@import './styles/fonts.css';
 @import 'tailwindcss';
 
 @theme {
@@ -68,5 +68,38 @@
     overflow: visible;
     clip: auto;
     white-space: normal;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-fade-up {
+      animation: fade-up 0.6s var(--ease-reveal) both;
+    }
+
+    .hero-delay-1 {
+      animation-delay: 0.1s;
+    }
+
+    .hero-delay-2 {
+      animation-delay: 0.2s;
+    }
+
+    .hero-delay-3 {
+      animation-delay: 0.3s;
+    }
+
+    .hero-delay-4 {
+      animation-delay: 0.4s;
+    }
   }
 }

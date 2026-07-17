@@ -1,16 +1,28 @@
-import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { Suspense, lazy, useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { BRAND, NAV_LINKS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 
+const MobileNav = lazy(() =>
+  import('@/components/layout/MobileNav').then((m) => ({ default: m.MobileNav })),
+)
+
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileNavMounted, setMobileNavMounted] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80)
+    let ticking = false
+    const onScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 80)
+        ticking = false
+      })
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -26,6 +38,11 @@ export function Navbar() {
     setMobileOpen(false)
     const el = document.querySelector(href)
     el?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const openMobileMenu = () => {
+    setMobileNavMounted(true)
+    setMobileOpen(true)
   }
 
   return (
@@ -88,82 +105,24 @@ export function Navbar() {
             className="rounded-lg p-2 text-charcoal lg:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay/40"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={() => (mobileOpen ? setMobileOpen(false) : openMobileMenu())}
+            onPointerEnter={() => void import('@/components/layout/MobileNav')}
           >
             {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </nav>
       </header>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-charcoal/40 backdrop-blur-sm lg:hidden"
-              onClick={() => setMobileOpen(false)}
-              aria-hidden
-            />
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 28, stiffness: 280 }}
-              className="fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col bg-cream p-8 shadow-2xl lg:hidden"
-            >
-              <div className="mb-10 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <img
-                    src={BRAND.logo}
-                    alt={BRAND.logoAlt}
-                    width={40}
-                    height={40}
-                    decoding="async"
-                    loading="lazy"
-                    className="h-10 w-10 rounded-full object-cover ring-1 ring-border/60"
-                  />
-                  <span className="font-display text-xl font-semibold text-charcoal">
-                    {BRAND.name}
-                  </span>
-                </div>
-                <button
-                  type="button"
-                  aria-label="Close menu"
-                  onClick={() => setMobileOpen(false)}
-                  className="rounded-lg p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay/40"
-                >
-                  <X className="h-6 w-6" />
-                </button>
-              </div>
-              <ul className="flex flex-col gap-6">
-                {NAV_LINKS.map((link, i) => (
-                  <motion.li
-                    key={link.href}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                  >
-                    <button
-                      type="button"
-                      onClick={() => scrollTo(link.href)}
-                      className="font-display text-2xl text-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay/40"
-                    >
-                      {link.label}
-                    </button>
-                  </motion.li>
-                ))}
-              </ul>
-              <div className="mt-auto pt-8">
-                <Button className="w-full" onClick={() => scrollTo('#contact')}>
-                  Get In Touch
-                </Button>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      {mobileNavMounted && (
+        <Suspense fallback={null}>
+          <MobileNav
+            open={mobileOpen}
+            onClose={() => setMobileOpen(false)}
+            onClosed={() => setMobileNavMounted(false)}
+            onNavigate={scrollTo}
+          />
+        </Suspense>
+      )}
     </>
   )
 }

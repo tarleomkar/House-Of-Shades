@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform } from '@/lib/motion-ui'
 import { useRef } from 'react'
 import { fadeUp, scrollReveal, staggerContainer } from '@/lib/motion'
 

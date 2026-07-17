@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from '@/lib/motion-ui'
 import { Paintbrush, Palette, Truck } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
 import { VALUE_PROPS } from '@/lib/constants'

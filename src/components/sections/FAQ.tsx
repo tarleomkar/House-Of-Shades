@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from '@/lib/motion-ui'
 import { Accordion } from '@/components/ui/Accordion'
 import { FAQ_SEO } from '@/lib/seo'
 import { fadeUp, scrollReveal } from '@/lib/motion'

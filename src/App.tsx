@@ -1,21 +1,20 @@
-import { Footer } from '@/components/layout/Footer'
+import { Suspense, lazy } from 'react'
 import { Navbar } from '@/components/layout/Navbar'
+import { Hero } from '@/components/sections/Hero'
 import { SEOHead } from '@/components/seo/SEOHead'
 import { SkipLink } from '@/components/seo/SkipLink'
 import { StructuredData } from '@/components/seo/StructuredData'
-import { About } from '@/components/sections/About'
-import { ConsultationCTA } from '@/components/sections/ConsultationCTA'
-import { FAQ } from '@/components/sections/FAQ'
-import { FeaturedWork } from '@/components/sections/FeaturedWork'
-import { Hero } from '@/components/sections/Hero'
-import { Process } from '@/components/sections/Process'
-import { ServiceExplorer } from '@/components/sections/ServiceExplorer'
-import { Testimonials } from '@/components/sections/Testimonials'
-import { TrustBar } from '@/components/sections/TrustBar'
+import { LazySection } from '@/components/ui/LazySection'
 import { useLenis } from '@/lib/useLenis'
+import { usePrefetchSections } from '@/lib/usePrefetchSections'
+
+const BelowFold = lazy(() =>
+  import('@/components/layout/BelowFold').then((m) => ({ default: m.BelowFold })),
+)
 
 export default function App() {
   useLenis()
+  usePrefetchSections()
 
   return (
     <>
@@ -25,16 +24,12 @@ export default function App() {
       <Navbar />
       <main id="main-content">
         <Hero />
-        <About />
-        <TrustBar />
-        <ServiceExplorer />
-        <Process />
-        <FeaturedWork />
-        <Testimonials />
-        <FAQ />
-        <ConsultationCTA />
+        <LazySection minHeight="36rem">
+          <Suspense fallback={null}>
+            <BelowFold />
+          </Suspense>
+        </LazySection>
       </main>
-      <Footer />
     </>
   )
 }

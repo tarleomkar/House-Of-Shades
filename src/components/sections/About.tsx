@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion } from '@/lib/motion-ui'
 import { Quote } from 'lucide-react'
 import { BRAND, FOUNDER_QUOTE } from '@/lib/constants'
 import { fadeUp, scrollReveal } from '@/lib/motion'

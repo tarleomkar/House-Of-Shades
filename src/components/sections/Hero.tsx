@@ -1,15 +1,24 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { VALUE_PROPS } from '@/lib/constants'
 import { HERO_SEO } from '@/lib/seo'
-import { fadeUp, staggerContainer } from '@/lib/motion'
+import { cn } from '@/lib/utils'
 
 export function Hero() {
+  const skipAnimation = useRef(
+    typeof document !== 'undefined' && !!document.getElementById('static-shell'),
+  )
+
   const scrollTo = (id: string) => {
     document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' })
   }
+
+  const animate = (delay: 0 | 1 | 2 | 3 | 4) =>
+    skipAnimation.current
+      ? ''
+      : cn('animate-fade-up opacity-0', delay > 0 && `hero-delay-${delay}`)
 
   return (
     <section
@@ -26,32 +35,31 @@ export function Hero() {
       />
       <div className="grain pointer-events-none absolute inset-0 opacity-[0.03]" aria-hidden />
 
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-        className="relative mx-auto w-full max-w-7xl px-6 lg:px-8"
-      >
-        <motion.div variants={fadeUp}>
+      <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-8">
+        <div className={animate(0)}>
           <Badge>{HERO_SEO.eyebrow}</Badge>
-        </motion.div>
+        </div>
 
-        <motion.h1
+        <h1
           id="hero-heading"
-          variants={fadeUp}
-          className="mt-6 w-full font-display text-4xl font-semibold leading-[1.05] tracking-tight text-charcoal sm:text-5xl md:text-6xl lg:text-7xl uppercase"
+          className={cn(
+            'mt-6 w-full font-display text-4xl font-semibold leading-[1.05] tracking-tight text-charcoal sm:text-5xl md:text-6xl lg:text-7xl uppercase',
+            animate(1),
+          )}
         >
           {HERO_SEO.h1}
-        </motion.h1>
+        </h1>
 
-        <motion.p
-          variants={fadeUp}
-          className="mt-6 max-w-4xl text-lg leading-relaxed text-charcoal-light lg:text-xl"
+        <p
+          className={cn(
+            'mt-6 max-w-4xl text-lg leading-relaxed text-charcoal-light lg:text-xl',
+            animate(2),
+          )}
         >
           {HERO_SEO.subheading}
-        </motion.p>
+        </p>
 
-        <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-4">
+        <div className={cn('mt-8 flex flex-wrap gap-4', animate(3))}>
           <Button size="lg" onClick={() => scrollTo('#contact')}>
             {HERO_SEO.ctaPrimary}
           </Button>
@@ -64,11 +72,13 @@ export function Hero() {
             {HERO_SEO.ctaSecondary}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
           </Button>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={fadeUp}
-          className="mt-14 grid w-full grid-cols-1 gap-8 border-t border-border pt-10 sm:grid-cols-3"
+        <div
+          className={cn(
+            'mt-14 grid w-full grid-cols-1 gap-8 border-t border-border pt-10 sm:grid-cols-3',
+            animate(4),
+          )}
           role="list"
           aria-label="Key service highlights"
         >
@@ -82,8 +92,8 @@ export function Hero() {
               </p>
             </div>
           ))}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     </section>
   )
 }

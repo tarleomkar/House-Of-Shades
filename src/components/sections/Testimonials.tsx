@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion } from '@/lib/motion-ui'
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
 import { Card } from '@/components/ui/Card'
 import { fadeUp, scrollReveal } from '@/lib/motion'

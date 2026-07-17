@@ -1,5 +1,5 @@
 import { ChevronDown } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from '@/lib/motion-ui'
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { MOTION } from '@/lib/constants'

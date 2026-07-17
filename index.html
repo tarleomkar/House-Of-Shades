@@ -48,13 +48,72 @@
     <meta name="twitter:description" content="Premium paint consultancy, interior &amp; exterior painting, texture finishes &amp; wall design in Nashik." />
     <meta name="twitter:image" content="https://houseofshades.in/images/logo.svg" />
 
-    <!-- Performance: font & asset hints -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml" />
+    <!-- Performance: critical assets (LCP = hero heading + body copy) -->
+    <link rel="preload" href="/fonts/cormorant-garamond-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/dm-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/images/logo.svg" as="image" type="image/svg+xml" fetchpriority="high" />
+
+    <!-- Critical CSS: instant LCP before JS hydrates -->
+    <style>
+      :root {
+        --cream: #fdf8f5;
+        --charcoal: #2c2825;
+        --charcoal-light: #4a4540;
+        --clay: #e8956f;
+        --border: #edd9cc;
+      }
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--charcoal);
+        font-family: 'DM Sans', system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      #static-shell {
+        padding: 7rem 1.5rem 4rem;
+        max-width: 80rem;
+        margin: 0 auto;
+      }
+      #static-shell .eyebrow {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        background: rgb(232 149 111 / 0.1);
+        color: var(--clay);
+        font-size: 0.75rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+      #static-shell h1 {
+        margin: 1.5rem 0 0;
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(2.25rem, 8vw, 4.5rem);
+        font-weight: 600;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+      }
+      #static-shell p {
+        margin: 1.5rem 0 0;
+        max-width: 56rem;
+        font-size: 1.125rem;
+        line-height: 1.625;
+        color: var(--charcoal-light);
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="static-shell" aria-hidden="true">
+        <span class="eyebrow">Premium Paint Consultancy · Nashik</span>
+        <h1>Beyond colors, we design experiences</h1>
+        <p>
+          Interior &amp; exterior painting, texture finishes, waterproofing, wall designs, and expert
+          color consultation in Nashik — for homeowners, builders, architects, and commercial property owners.
+        </p>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

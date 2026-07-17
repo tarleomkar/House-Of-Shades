@@ -1,5 +1,5 @@
 import { type FormEvent, useState } from 'react'
-import { motion } from 'framer-motion'
+import { motion } from '@/lib/motion-ui'
 import { Button } from '@/components/ui/Button'
 import { BRAND, CONSULTATION_OPTIONS } from '@/lib/constants'
 import { fadeUp, scrollReveal } from '@/lib/motion'

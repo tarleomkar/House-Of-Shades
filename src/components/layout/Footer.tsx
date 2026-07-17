@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { Mail, Phone, Share2 } from 'lucide-react'
 import { BRAND } from '@/lib/constants'
 
@@ -33,7 +34,7 @@ const footerLinks = {
   ],
 }
 
-export function Footer() {
+export const Footer = memo(function Footer() {
   const scrollTo = (href: string) => {
     if (href.startsWith('#') && href.length > 1) {
       document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
@@ -112,4 +113,4 @@ export function Footer() {
       </div>
     </footer>
   )
-}
+})
