@@ -52,8 +52,9 @@ export function Footer() {
               {BRAND.tagline}
             </p>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-charcoal-light">
-              Premium paint coatings, expert color coordination, and end-to-end
-              execution support — founded by {BRAND.founder}.
+              Premium paint consultancy, interior &amp; exterior painting, texture
+              finishes, and color coordination in {BRAND.location} — founded by{' '}
+              {BRAND.founder}.
             </p>
             <a
               href={BRAND.instagramHref}

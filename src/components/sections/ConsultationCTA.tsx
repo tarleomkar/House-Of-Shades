@@ -14,7 +14,7 @@ export function ConsultationCTA() {
   }
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-pigment py-20 lg:py-28">
+    <section id="contact" className="relative overflow-hidden bg-pigment py-20 lg:py-28" aria-labelledby="contact-heading">
       <div className="grain pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -23,13 +23,13 @@ export function ConsultationCTA() {
             <p className="text-sm font-medium uppercase tracking-wider text-white/70">
               Get In Touch
             </p>
-            <h2 className="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl text-balance">
-              Connect With Us
+            <h2 id="contact-heading" className="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl text-balance">
+              Connect With Us in Nashik
             </h2>
             <p className="mt-4 text-lg text-white/80">
-              Ready to optimize your project&apos;s procurement margins and secure
-              premium execution support? Contact us today for direct material rates
-              or an onsite project estimate.
+              Ready for a free color consultation or onsite painting estimate in Nashik?
+              Contact us for interior &amp; exterior painting, texture finishes, waterproofing,
+              and wall design services.
             </p>
             <div className="mt-8 space-y-3 text-white/80">
               <p>
@@ -142,7 +142,7 @@ export function ConsultationCTA() {
                 </div>
 
                 <Button type="submit" size="lg" className="mt-6 w-full">
-                  Request Project Estimate
+                  Request Free Nashik Consultation
                 </Button>
                 <p className="mt-4 text-center text-xs text-warm-gray">
                   Your information stays private. No spam — just a direct follow-up from our team.

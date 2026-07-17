@@ -8,28 +8,28 @@ import { MOTION } from '@/lib/constants'
 const testimonials = [
   {
     name: 'Priya & Rahul M.',
-    city: 'Bangalore',
+    city: 'Nashik',
     quote:
       'They understood our home before we did. The palette feels warm, layered, and completely us — not a catalogue look.',
     rating: 5,
   },
   {
     name: 'Ananya S.',
-    city: 'Mumbai',
+    city: 'Panchavati, Nashik',
     quote:
       'From sample boards to the final coat, every step felt considered. Our living room finally has the depth we wanted.',
     rating: 5,
   },
   {
     name: 'David & Meera K.',
-    city: 'Hyderabad',
+    city: 'Gangapur, Nashik',
     quote:
       'Professional, unhurried, and genuinely expert. The exterior refresh changed how our home feels from the street in.',
     rating: 5,
   },
   {
     name: 'Sneha R.',
-    city: 'Pune',
+    city: 'CIDCO, Nashik',
     quote:
       'The consultation alone was worth it — they helped us see colour in relation to light in a way we never had before.',
     rating: 5,

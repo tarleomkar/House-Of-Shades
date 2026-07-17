@@ -1,7 +1,11 @@
+import { LOCATION } from '@/lib/seo'
+
 export const BRAND = {
   name: 'House Of Shades',
   tagline: 'Paint | Design | Deliver',
-  logo: '/images/logo.png',
+  logo: '/images/logo.svg',
+  logoAlt:
+    'House Of Shades logo — premium paint consultancy and painting services in Nashik Maharashtra',
   founder: 'Pooja Ahire',
   phone: '+91 70587 15845',
   phoneHref: 'tel:+917058715845',
@@ -9,6 +13,7 @@ export const BRAND = {
   emailHref: 'mailto:houseofshadessss@gmail.com',
   instagram: '@house_of_shadessss',
   instagramHref: 'https://instagram.com/house_of_shadessss',
+  location: `${LOCATION.city}, ${LOCATION.state}`,
 } as const
 
 export const NAV_LINKS = [
@@ -26,9 +31,13 @@ export const MOTION = {
 } as const
 
 export const CONSULTATION_OPTIONS = [
+  'Interior Painting',
+  'Exterior Painting',
+  'Texture Finishes',
+  'Waterproofing',
+  'Wall Design',
+  'Color Consultation',
   'Direct Paint Supply',
-  'Vendor Management',
-  'Surface & Site Cleaning',
   'Turnkey Execution',
   'Onsite Project Estimate',
 ] as const
@@ -40,27 +49,39 @@ export const OFFERINGS = [
   {
     title: 'Direct Paint Supply',
     description:
-      'Direct procurement of high-grade commercial coatings and finishes at unprecedented project-scale rates.',
+      'Direct procurement of high-grade commercial coatings and finishes at project-scale rates across Nashik — ideal for builders and commercial painting projects.',
   },
   {
     title: 'Vendor Management',
     description:
-      'End-to-end handling, supervision, and coordination of skilled application crews and site painters.',
+      'End-to-end supervision and coordination of skilled interior and exterior painting crews for homes, offices, and commercial sites in Nashik.',
   },
   {
     title: 'Surface & Site Cleaning',
     description:
-      'Meticulous surface preparation prior to application, protective masking, and deep post-paint site cleaning protocols.',
+      'Meticulous surface preparation, waterproofing prep, protective masking, and post-paint site cleaning before texture finishes or wall design application.',
   },
   {
     title: 'Turnkey Execution',
     description:
-      'Completely hands-free management from initial mapping and product deployment to your absolute final site handover.',
+      'Hands-free painting project management in Nashik — from color consultation and material supply to final interior, exterior, or texture finish handover.',
   },
 ] as const
 
 export const VALUE_PROPS = [
-  { title: 'Premium Paints', description: 'High-grade commercial coatings at project-scale rates.' },
-  { title: 'Expert Design', description: 'Expert color coordination tailored for every space.' },
-  { title: 'Flawless Delivery', description: 'End-to-end execution support from supply to handover.' },
+  {
+    title: 'Premium Paints',
+    description:
+      'High-grade interior, exterior, and texture coatings at project-scale rates in Nashik.',
+  },
+  {
+    title: 'Expert Design',
+    description:
+      'Professional color consultation and wall design planning tailored to every space.',
+  },
+  {
+    title: 'Flawless Delivery',
+    description:
+      'End-to-end painting execution — from waterproofing prep to final finish handover.',
+  },
 ] as const

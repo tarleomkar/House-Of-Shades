@@ -13,7 +13,7 @@ const icons = [Truck, HardHat, Sparkles, Brush]
 
 export function ServiceExplorer() {
   return (
-    <section id="services" className="bg-cream-dark/50 py-20 lg:py-28">
+    <section id="services" className="bg-cream-dark/50 py-20 lg:py-28" aria-labelledby="services-heading">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div
           {...scrollReveal}
@@ -23,12 +23,12 @@ export function ServiceExplorer() {
           <p className="text-sm font-medium uppercase tracking-wider text-clay">
             Services & Advantage
           </p>
-          <h2 className="mt-3 font-display text-3xl font-semibold text-charcoal sm:text-4xl">
+          <h2 id="services-heading" className="mt-3 font-display text-3xl font-semibold text-charcoal sm:text-4xl">
             Our Offerings
           </h2>
           <p className="mt-4 text-charcoal-light">
-            We offer a completely integrated service model that covers both premium
-            wholesale paint supply and professional application teams.
+            Integrated paint consultancy and painting services in Nashik — premium
+            wholesale supply and professional application teams for every project scale.
           </p>
         </motion.div>
 

@@ -244,13 +244,13 @@ export function FeaturedWork() {
   const next = () => setActive((i) => (i === projects.length - 1 ? 0 : i + 1))
 
   return (
-    <section id="portfolio" className="bg-cream-dark/50 py-20 lg:py-28">
+    <section id="portfolio" className="bg-cream-dark/50 py-20 lg:py-28" aria-labelledby="portfolio-heading">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <motion.div {...scrollReveal} variants={fadeUp} className="max-w-2xl">
           <p className="text-sm font-medium uppercase tracking-wider text-clay">
             Portfolio
           </p>
-          <h2 className="mt-3 font-display text-3xl font-semibold text-charcoal sm:text-4xl">
+          <h2 id="portfolio-heading" className="mt-3 font-display text-3xl font-semibold text-charcoal sm:text-4xl">
             Featured Transformations
           </h2>
           <p className="mt-4 text-charcoal-light">

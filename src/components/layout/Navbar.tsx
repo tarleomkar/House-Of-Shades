@@ -44,13 +44,25 @@ export function Navbar() {
         >
           <a
             href="#"
-            className="font-display text-xl font-semibold tracking-tight text-charcoal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream lg:text-2xl"
+            aria-label={`${BRAND.name} — Home`}
+            className="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay/40 focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
             onClick={(e) => {
               e.preventDefault()
               window.scrollTo({ top: 0, behavior: 'smooth' })
             }}
           >
-            {BRAND.name}
+            <img
+              src={BRAND.logo}
+              alt={BRAND.logoAlt}
+              width={44}
+              height={44}
+              decoding="async"
+              fetchPriority="high"
+              className="h-10 w-10 rounded-full object-cover ring-1 ring-border/60 lg:h-11 lg:w-11"
+            />
+            <span className="font-display text-xl font-semibold tracking-tight text-charcoal lg:text-2xl">
+              {BRAND.name}
+            </span>
           </a>
 
           <ul className="hidden items-center gap-8 lg:flex">
@@ -102,9 +114,20 @@ export function Navbar() {
               className="fixed inset-y-0 right-0 z-50 flex w-full max-w-sm flex-col bg-cream p-8 shadow-2xl lg:hidden"
             >
               <div className="mb-10 flex items-center justify-between">
-                <span className="font-display text-xl font-semibold text-charcoal">
-                  {BRAND.name}
-                </span>
+                <div className="flex items-center gap-3">
+                  <img
+                    src={BRAND.logo}
+                    alt={BRAND.logoAlt}
+                    width={40}
+                    height={40}
+                    decoding="async"
+                    loading="lazy"
+                    className="h-10 w-10 rounded-full object-cover ring-1 ring-border/60"
+                  />
+                  <span className="font-display text-xl font-semibold text-charcoal">
+                    {BRAND.name}
+                  </span>
+                </div>
                 <button
                   type="button"
                   aria-label="Close menu"

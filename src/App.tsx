@@ -1,5 +1,8 @@
 import { Footer } from '@/components/layout/Footer'
 import { Navbar } from '@/components/layout/Navbar'
+import { SEOHead } from '@/components/seo/SEOHead'
+import { SkipLink } from '@/components/seo/SkipLink'
+import { StructuredData } from '@/components/seo/StructuredData'
 import { About } from '@/components/sections/About'
 import { ConsultationCTA } from '@/components/sections/ConsultationCTA'
 import { FAQ } from '@/components/sections/FAQ'
@@ -16,8 +19,11 @@ export default function App() {
 
   return (
     <>
+      <SEOHead />
+      <StructuredData />
+      <SkipLink />
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
         <About />
         <TrustBar />
