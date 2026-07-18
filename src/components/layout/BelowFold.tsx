@@ -21,6 +21,11 @@ const FeaturedWork = lazy(() =>
     default: m.FeaturedWork,
   })),
 )
+const SampleWork = lazy(() =>
+  import('@/components/sections/SampleWork').then((m) => ({
+    default: m.SampleWork,
+  })),
+)
 const Testimonials = lazy(() =>
   import('@/components/sections/Testimonials').then((m) => ({
     default: m.Testimonials,
@@ -64,6 +69,11 @@ export function BelowFold() {
       <LazySection minHeight="40rem">
         <Suspense fallback={null}>
           <FeaturedWork />
+        </Suspense>
+      </LazySection>
+      <LazySection minHeight="48rem">
+        <Suspense fallback={null}>
+          <SampleWork />
         </Suspense>
       </LazySection>
       <LazySection minHeight="28rem">

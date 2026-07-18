@@ -13,6 +13,7 @@ const footerLinks = {
     { label: 'About Us', href: '#about' },
     { label: 'Our Process', href: '#process' },
     { label: 'Portfolio', href: '#portfolio' },
+    { label: 'Sample Work', href: '#sample-work' },
     { label: 'FAQ', href: '#faq' },
   ],
   Connect: [
