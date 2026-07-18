@@ -29,7 +29,7 @@ export const SEO = {
   locale: 'en_IN',
   themeColor: '#e8956f',
   twitterHandle: '@house_of_shadessss',
-  ogImage: `${SITE_URL}/images/logo.svg`,
+  ogImage: `${SITE_URL}/images/logo-og.webp`,
   ogImageAlt:
     'House Of Shades — premium paint consultancy and painting services logo, Nashik Maharashtra',
 } as const

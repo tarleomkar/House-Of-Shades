@@ -36,6 +36,29 @@ export function Navbar() {
     el?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const brandMark = (size: 'header' | 'drawer') => (
+    <picture>
+      <source
+        srcSet={`${BRAND.logo} 96w, ${BRAND.logo2x} 192w`}
+        sizes={size === 'header' ? '48px' : '40px'}
+        type="image/webp"
+      />
+      <img
+        src={BRAND.logoPng}
+        alt={BRAND.logoAlt}
+        width={size === 'header' ? 48 : 40}
+        height={size === 'header' ? 48 : 40}
+        decoding="async"
+        fetchPriority={size === 'header' ? 'high' : 'auto'}
+        loading={size === 'header' ? 'eager' : 'lazy'}
+        className={cn(
+          'shrink-0 rounded-full object-contain ring-1 ring-border/60',
+          size === 'header' ? 'h-12 w-12 lg:h-14 lg:w-14' : 'h-10 w-10',
+        )}
+      />
+    </picture>
+  )
+
   return (
     <>
       <header
@@ -59,15 +82,7 @@ export function Navbar() {
               window.scrollTo({ top: 0, behavior: 'smooth' })
             }}
           >
-            <img
-              src={BRAND.logo}
-              alt={BRAND.logoAlt}
-              width={44}
-              height={44}
-              decoding="async"
-              fetchPriority="high"
-              className="h-10 w-10 rounded-full object-cover ring-1 ring-border/60 lg:h-11 lg:w-11"
-            />
+            {brandMark('header')}
             <span className="font-display text-xl font-semibold tracking-tight text-charcoal lg:text-2xl">
               {BRAND.name}
             </span>
@@ -126,15 +141,7 @@ export function Navbar() {
               >
                 <div className="mb-10 flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <img
-                      src={BRAND.logo}
-                      alt={BRAND.logoAlt}
-                      width={40}
-                      height={40}
-                      decoding="async"
-                      loading="lazy"
-                      className="h-10 w-10 rounded-full object-cover ring-1 ring-border/60"
-                    />
+                    {brandMark('drawer')}
                     <span className="font-display text-xl font-semibold text-charcoal">
                       {BRAND.name}
                     </span>

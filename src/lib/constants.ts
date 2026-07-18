@@ -3,7 +3,9 @@ import { LOCATION } from '@/lib/seo'
 export const BRAND = {
   name: 'House Of Shades',
   tagline: 'Paint | Design | Deliver',
-  logo: '/images/logo.svg',
+  logo: '/images/logo.webp',
+  logo2x: '/images/logo@2x.webp',
+  logoPng: '/images/IMG_7802.PNG',
   logoAlt:
     'House Of Shades logo — premium paint consultancy and painting services in Nashik Maharashtra',
   founder: 'Pooja Ahire',
