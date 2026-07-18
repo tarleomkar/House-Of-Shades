@@ -20,8 +20,10 @@ interface Project {
   duration: string
   services: string[]
   palette: { name: string; color: string }[]
-  before: { wall: string; accent: string; mood: string }
-  after: { wall: string; accent: string; mood: string }
+  image: string
+  imageAlt: string
+  before: { mood: string }
+  after: { mood: string; tint: string }
   summary: string
   outcome: string
 }
@@ -40,8 +42,10 @@ const projects: Project[] = [
       { name: 'Terracotta', color: '#c4785a' },
       { name: 'Deep Olive', color: '#3d4a3e' },
     ],
-    before: { wall: '#c4c0b8', accent: '#a8a4a0', mood: 'Flat · dated · uneven tone' },
-    after: { wall: '#e8dcc8', accent: '#c4785a', mood: 'Warm · layered · cohesive flow' },
+    image: '/images/portfolio/linden-living.webp',
+    imageAlt: 'Living room wall before and after premium paint finish',
+    before: { mood: 'Flat · dated · uneven tone' },
+    after: { mood: 'Warm · layered · cohesive flow', tint: '#e8dcc8' },
     summary:
       'A full living and dining repaint with surface correction, accent wall planning, and premium matte finishes across open-plan zones.',
     outcome: 'Delivered on schedule with zero rework — client signed off after first walkthrough.',
@@ -59,8 +63,10 @@ const projects: Project[] = [
       { name: 'Soft Sage', color: '#b8c4b0' },
       { name: 'Ivory', color: '#f5f0e8' },
     ],
-    before: { wall: '#b0b0b0', accent: '#999999', mood: 'Cold · generic · poor light balance' },
-    after: { wall: '#f5f0e8', accent: '#b8c4b0', mood: 'Calm · restful · soft contrast' },
+    image: '/images/portfolio/parkview-bedroom.webp',
+    imageAlt: 'Bedroom wall before and after colour refresh',
+    before: { mood: 'Cold · generic · poor light balance' },
+    after: { mood: 'Calm · restful · soft contrast', tint: '#f5f0e8' },
     summary:
       'Bedroom and ensuite colour refresh with moisture-resistant coatings and a curated two-tone palette matched to natural light.',
     outcome: 'Palette approved on-site after sample boards — finished ahead of handover date.',
@@ -78,71 +84,65 @@ const projects: Project[] = [
       { name: 'Warm White', color: '#f2ebe3' },
       { name: 'Brass Accent', color: '#c9956a' },
     ],
-    before: { wall: '#d4cfc4', accent: '#bfbab0', mood: 'Worn · inconsistent · high-traffic fatigue' },
-    after: { wall: '#f2ebe3', accent: '#3a3632', mood: 'Premium · durable · brand-ready finish' },
+    image: '/images/portfolio/cedar-retail.webp',
+    imageAlt: 'Retail interior wall before and after commercial repaint',
+    before: { mood: 'Worn · inconsistent · high-traffic fatigue' },
+    after: { mood: 'Premium · durable · brand-ready finish', tint: '#f2ebe3' },
     summary:
       'Bulk material supply and coordinated crew deployment for a boutique retail fit-out with strict opening-deadline delivery.',
     outcome: 'Project-scale pricing saved ~22% vs retail procurement on materials alone.',
   },
 ]
 
-function RoomScene({
-  wall,
-  accent,
+function WallTransformPhoto({
+  src,
+  alt,
   variant,
+  tint,
 }: {
-  wall: string
-  accent: string
+  src: string
+  alt: string
   variant: 'before' | 'after'
+  tint: string
 }) {
   return (
-    <div className="absolute inset-0 overflow-hidden">
-      {/* Floor */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-[28%]"
-        style={{
-          background: variant === 'before'
-            ? 'linear-gradient(180deg, #a8a4a0 0%, #8e8a86 100%)'
-            : 'linear-gradient(180deg, #d4c4b0 0%, #b8a896 100%)',
-        }}
-      />
-      {/* Left wall */}
-      <div
-        className="absolute bottom-[28%] left-0 top-0 w-[22%] origin-bottom-right skew-y-0"
-        style={{
-          background: `linear-gradient(90deg, ${accent}dd, ${accent})`,
-          transform: 'skewX(6deg) translateX(-8%)',
-        }}
-      />
-      {/* Back wall */}
-      <div
-        className="absolute bottom-[28%] left-[12%] right-[12%] top-[18%] rounded-sm shadow-inner"
-        style={{ backgroundColor: wall }}
-      />
-      {/* Accent strip */}
-      <div
-        className="absolute bottom-[28%] left-[12%] top-[18%] w-[35%] rounded-sm"
-        style={{ backgroundColor: accent, opacity: variant === 'after' ? 0.85 : 0.35 }}
-      />
-      {/* Window / light */}
-      <div className="absolute left-[58%] top-[24%] h-[32%] w-[22%] rounded border-4 border-white/40 bg-gradient-to-br from-sky-100/80 to-sky-200/40 shadow-inner" />
-      <div
+    <div className="absolute inset-0 bg-stone-300">
+      <img
+        src={src}
+        alt={alt}
+        draggable={false}
+        loading="lazy"
+        decoding="async"
         className={cn(
-          'absolute inset-0',
-          variant === 'after'
-            ? 'bg-gradient-to-br from-amber-100/25 via-transparent to-transparent'
-            : 'bg-gradient-to-br from-gray-400/20 via-transparent to-gray-500/10',
+          'h-full w-full object-cover',
+          variant === 'before'
+            ? 'saturate-[0.35] contrast-[0.78] brightness-[0.88] sepia-[0.22] hue-rotate-[-8deg]'
+            : 'saturate-[1.15] contrast-[1.08] brightness-[1.06]',
         )}
       />
-      {/* Furniture hint */}
-      <div
-        className="absolute bottom-[30%] left-[20%] h-[18%] w-[28%] rounded-t-lg"
-        style={{ backgroundColor: variant === 'before' ? '#9a9690' : accent }}
-      />
-      {variant === 'before' && (
+
+      {variant === 'before' ? (
         <>
-          <div className="absolute left-[18%] top-[22%] h-1 w-[40%] rotate-[-2deg] bg-white/30" />
-          <div className="absolute left-[20%] top-[30%] h-1 w-[25%] rotate-[1deg] bg-white/20" />
+          <div className="absolute inset-0 bg-stone-700/30 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-gradient-to-br from-stone-500/25 via-transparent to-stone-700/20" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_38%,rgba(90,85,80,0.45),transparent_52%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_62%,rgba(110,105,98,0.35),transparent_48%)]" />
+          <div
+            className="absolute inset-0 opacity-[0.18]"
+            style={{
+              backgroundImage:
+                'repeating-linear-gradient(-14deg, transparent, transparent 42px, rgba(255,255,255,0.12) 42px, rgba(255,255,255,0.12) 43px)',
+            }}
+          />
+        </>
+      ) : (
+        <>
+          <div
+            className="absolute inset-0 opacity-40 mix-blend-soft-light"
+            style={{ backgroundColor: tint }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-amber-50/35 via-transparent to-clay/15" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(255,248,240,0.45),transparent_55%)]" />
         </>
       )}
     </div>
@@ -202,12 +202,22 @@ function BeforeAfterSlider({ project }: { project: Project }) {
         aria-valuemin={0}
         aria-valuemax={100}
       >
-        <RoomScene wall={project.before.wall} accent={project.before.accent} variant="before" />
+        <WallTransformPhoto
+          src={project.image}
+          alt={project.imageAlt}
+          variant="before"
+          tint={project.after.tint}
+        />
         <div
           className="absolute inset-0 overflow-hidden"
           style={{ clipPath: `inset(0 0 0 ${position}%)` }}
         >
-          <RoomScene wall={project.after.wall} accent={project.after.accent} variant="after" />
+          <WallTransformPhoto
+            src={project.image}
+            alt={project.imageAlt}
+            variant="after"
+            tint={project.after.tint}
+          />
         </div>
 
         <div
@@ -229,7 +239,7 @@ function BeforeAfterSlider({ project }: { project: Project }) {
 
       <p className="flex items-center justify-center gap-2 text-center text-xs text-warm-gray">
         <ArrowLeftRight className="h-3.5 w-3.5" aria-hidden />
-        Drag the handle or use arrow keys to compare the transformation
+        Drag the handle — same wall photo with raw surface vs. finished paint
       </p>
     </div>
   )
@@ -254,8 +264,8 @@ export function FeaturedWork() {
             Featured Transformations
           </h2>
           <p className="mt-4 text-charcoal-light">
-            Real project outcomes — surface prep, colour planning, and premium
-            execution. Slide to compare the space before and after our work.
+            Real wall surfaces — slide to compare the original room before prep and
+            after our colour finish is applied.
           </p>
         </motion.div>
 
