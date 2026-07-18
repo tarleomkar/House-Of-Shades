@@ -2,8 +2,10 @@ import { BRAND } from '@/lib/constants'
 import {
   BREADCRUMBS,
   FAQ_SEO,
+  getSchemaAreaServed,
   LOCATION,
   SEO,
+  SERVICE_COVERAGE_LABEL,
   SERVICE_SEO,
   SITE_URL,
 } from '@/lib/seo'
@@ -18,6 +20,8 @@ function JsonLd({ data }: { data: Record<string, unknown> }) {
 }
 
 export function StructuredData() {
+  const areaServed = getSchemaAreaServed()
+
   const organization = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -33,10 +37,7 @@ export function StructuredData() {
       name: BRAND.founder,
     },
     sameAs: [BRAND.instagramHref],
-    areaServed: LOCATION.areaServed.map((area) => ({
-      '@type': 'City',
-      name: area,
-    })),
+    areaServed,
   }
 
   const localBusiness = {
@@ -62,10 +63,7 @@ export function StructuredData() {
       latitude: LOCATION.geo.latitude,
       longitude: LOCATION.geo.longitude,
     },
-    areaServed: LOCATION.areaServed.map((area) => ({
-      '@type': 'City',
-      name: `${area}, ${LOCATION.state}`,
-    })),
+    areaServed,
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Painting & Consultancy Services',
@@ -74,7 +72,7 @@ export function StructuredData() {
         itemOffered: {
           '@type': 'Service',
           name: service,
-          areaServed: `${LOCATION.city}, ${LOCATION.state}`,
+          areaServed: SERVICE_COVERAGE_LABEL,
         },
       })),
     },

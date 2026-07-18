@@ -15,7 +15,7 @@ export function FAQ() {
             Frequently Asked Questions
           </h2>
           <p className="mt-4 text-charcoal-light">
-            Common questions about painting, consultancy, and project support in Nashik.
+            Common questions about painting, consultancy, and project support across Maharashtra and India.
           </p>
         </motion.div>
 

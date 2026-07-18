@@ -7,7 +7,7 @@ export const BRAND = {
   logo2x: '/images/logo@2x.webp',
   logoPng: '/images/IMG_7802.PNG',
   logoAlt:
-    'House Of Shades logo — premium paint consultancy and painting services in Nashik Maharashtra',
+    'House Of Shades logo — premium paint consultancy and painting services across Maharashtra and India',
   founder: 'Pooja Ahire',
   phone: '+91 70587 15845',
   phoneHref: 'tel:+917058715845',
@@ -52,12 +52,12 @@ export const OFFERINGS = [
   {
     title: 'Direct Paint Supply',
     description:
-      'Direct procurement of high-grade commercial coatings and finishes at project-scale rates across Nashik — ideal for builders and commercial painting projects.',
+      'Direct procurement of high-grade commercial coatings and finishes at project-scale rates across Maharashtra and India — ideal for builders and commercial painting projects.',
   },
   {
     title: 'Vendor Management',
     description:
-      'End-to-end supervision and coordination of skilled interior and exterior painting crews for homes, offices, and commercial sites in Nashik.',
+      'End-to-end supervision and coordination of skilled interior and exterior painting crews for homes, offices, and commercial sites across Maharashtra and India.',
   },
   {
     title: 'Surface & Site Cleaning',
@@ -67,7 +67,7 @@ export const OFFERINGS = [
   {
     title: 'Turnkey Execution',
     description:
-      'Hands-free painting project management in Nashik — from color consultation and material supply to final interior, exterior, or texture finish handover.',
+      'Hands-free painting project management — from color consultation and material supply to final interior, exterior, or texture finish handover anywhere in Maharashtra and India.',
   },
 ] as const
 
@@ -75,7 +75,7 @@ export const VALUE_PROPS = [
   {
     title: 'Premium Paints',
     description:
-      'High-grade interior, exterior, and texture coatings at project-scale rates in Nashik.',
+      'High-grade interior, exterior, and texture coatings at project-scale rates across Maharashtra and India.',
   },
   {
     title: 'Expert Design',

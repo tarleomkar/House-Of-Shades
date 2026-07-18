@@ -17,9 +17,9 @@ export function About() {
             </h2>
             <p className="mt-6 leading-relaxed text-charcoal-light">
               Founded and led by <strong className="font-medium text-charcoal">{BRAND.founder}</strong>,
-              our Nashik-based firm delivers premium paint coatings, interior and exterior
+              our Nashik-headquartered firm delivers premium paint coatings, interior and exterior
               painting, texture finishes, waterproofing, wall designs, and expert color
-              coordination for all types of spaces.
+              coordination for projects across Maharashtra and India.
             </p>
             <p className="mt-4 leading-relaxed text-charcoal-light">
               We design our operations to support homeowners, builders, interior designers,

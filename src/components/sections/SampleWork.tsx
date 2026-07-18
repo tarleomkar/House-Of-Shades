@@ -18,7 +18,7 @@ export function SampleWork() {
             id="sample-work-heading"
             className="mt-3 font-display text-3xl font-semibold text-charcoal sm:text-4xl"
           >
-            Recent Projects Across Nashik
+            Recent Projects Across Maharashtra & India
           </h2>
           <p className="mt-4 text-charcoal-light">
             A selection of interior, exterior, texture, and commercial finishes — showcasing

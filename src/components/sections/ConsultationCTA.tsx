@@ -24,12 +24,12 @@ export function ConsultationCTA() {
               Get In Touch
             </p>
             <h2 id="contact-heading" className="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl text-balance">
-              Connect With Us in Nashik
+              Connect With Us
             </h2>
             <p className="mt-4 text-lg text-white/80">
-              Ready for a free color consultation or onsite painting estimate in Nashik?
-              Contact us for interior &amp; exterior painting, texture finishes, waterproofing,
-              and wall design services.
+              Ready for a free color consultation or onsite painting estimate?
+              We serve Mumbai, Pune, Nashik, Maharashtra, and major cities across India —
+              interior &amp; exterior painting, texture finishes, waterproofing, and wall design.
             </p>
             <div className="mt-8 space-y-3 text-white/80">
               <p>
@@ -142,7 +142,7 @@ export function ConsultationCTA() {
                 </div>
 
                 <Button type="submit" size="lg" className="mt-6 w-full">
-                  Request Free Nashik Consultation
+                  Request Free Consultation
                 </Button>
                 <p className="mt-4 text-center text-xs text-warm-gray">
                   Your information stays private. No spam — just a direct follow-up from our team.

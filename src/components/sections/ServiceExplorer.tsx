@@ -27,8 +27,8 @@ export function ServiceExplorer() {
             Our Offerings
           </h2>
           <p className="mt-4 text-charcoal-light">
-            Integrated paint consultancy and painting services in Nashik — premium
-            wholesale supply and professional application teams for every project scale.
+            Integrated paint consultancy and painting services across Maharashtra and India —
+            premium wholesale supply and professional application teams for every project scale.
           </p>
         </motion.div>
 

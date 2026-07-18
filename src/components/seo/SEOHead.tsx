@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async'
-import { PAGE_SEO, SEO, SITE_URL } from '@/lib/seo'
+import { LOCATION, PAGE_SEO, SEO, SITE_URL } from '@/lib/seo'
 
 interface SEOHeadProps {
   page?: keyof typeof PAGE_SEO
@@ -36,7 +36,7 @@ export function SEOHead({
 
       {/* Geo / local */}
       <meta name="geo.region" content="IN-MH" />
-      <meta name="geo.placename" content="Nashik" />
+      <meta name="geo.placename" content={`${LOCATION.city}, ${LOCATION.state}, ${LOCATION.country}`} />
       <meta name="geo.position" content="19.9975;73.7898" />
       <meta name="ICBM" content="19.9975, 73.7898" />
 
